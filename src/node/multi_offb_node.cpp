@@ -43,6 +43,7 @@ int main(int argc, char **argv) {
     ros::init(argc, argv, "offb_node");
     ros::NodeHandle nh;
 
+    ROS_INFO("multi_offb_node start");
     std::vector<simple_controller> sc(3);
 
     std::vector<std::vector<int>> pos = {
@@ -70,6 +71,7 @@ int main(int argc, char **argv) {
 
     // wait for FCU connection
     while (ros::ok()) {
+        ROS_INFO("wait for FCU connection");
         bool ok = true;
         for (int id = 0; id < 3; id++) {
             ok &= sc[id].current_state.connected;
